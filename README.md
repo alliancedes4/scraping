@@ -44,3 +44,12 @@ from bs4 import BeautifulSoup
 
 print("Extraction completed successfully!")
 
+## Workflow
+
+- scrap les urls du site
+
+- pour chaque categorie extrait les urls 
+
+- pour chaque url => j'ouvre une /  soupe
+
+- pour chaque soupe je transforme le html en dictionnaire

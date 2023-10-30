@@ -5,3 +5,5 @@ requirements.txt/
 unlivre_data.csv/
 une_categorie_data.csv/
 README.md/
+*.pyc
+__pycache__
