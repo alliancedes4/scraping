@@ -1,17 +1,22 @@
+import os
+
+import requests
+from bs4 import BeautifulSoup
+
 from src.consts import BASE_URL
 from src.file_manager import validate_data_dir  
+from src.extractor import extract_categories
 
-def s():
-    pass
+def scrap_all_categorie(base_url=BASE_URL):
+    """Scarp all categories frome tje website"""
 
-def scrap_all_categorie(base_url:str=BASE_URL): 
-    """scrap all categories from the website"""
+    #request la page
+    response = requests.get(BASE_URL)
 
-    # verif si le dossier data existe
-    validate_data_dir()
-    # scrapper la liste des categories
+    # soup de la page de notre page 
+    soup = BeautifulSoup(response.text, "html.parser")
 
-    
-    # sauvegarder la liste des categories dans un fichier 
+    # extract categories form main page
+    categ_list = extract_categories(soup)
 
-    print("Scraping all categories is done")
+    return categ_list
