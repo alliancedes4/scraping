@@ -4,12 +4,13 @@ import requests
 from bs4 import BeautifulSoup
 
 from src.consts import BASE_URL
-from src.consts import CATEGORY_URL
+from src.consts import category_names
 from src.extractor import extract_categories
+
 
 def scrap_all_categories(base_url: str = BASE_URL) -> list:
     """Scarp all categories frome tje website"""
-
+         
     #request la page
     response = requests.get(BASE_URL)
 
@@ -18,34 +19,36 @@ def scrap_all_categories(base_url: str = BASE_URL) -> list:
 
     # extract categories form main page
     categ_list = extract_categories(soup)
+    print(categ_list[0])
 
     # Extraire les noms des catégories à partir des URL
-    category_names = [CATEGORY_URL.split("/")[-2].split("_")[0] for url in categ_list]
+    category_names = [url.split("/")[-2].split()[] for url in categ_list]
+    #category_names = [url.split("/")[-2].split("_")[0] for url in categ_list]
     print("Scraping all categories is done. Category names:", category_names)
 
     return categ_list
+    
+
+def scrap_all_urls(base_url):
+    """Scrape all URLs from the website and print them."""
+    # Send an HTTP request to fetch the content of the main page
+    response = requests.get(base_url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content of the page with BeautifulSoup
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        # Extract all category links
+        links = soup.find_all('h3')
+
+        # Iterate through the links and print the URLs
+        for link in links:
+            href = link.a['href']
+            print(href)
+    else:
+        print("The request failed with status code", response.status_code)
 
 
-
-
-
-# def scrap_all_urls(base_url):
-    #"""Scrap all URLs from the website and print them."""
-    # Envoyer une requête HTTP pour obtenir le contenu de la page principale
-    #response = requests.get(base_url)
-
-    # Analyser le contenu HTML de la page avec BeautifulSoup
-    #soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Extraire tous les liens de catégorie
-    #links = soup.find_all('h3')
-
-    # Parcourir les liens et imprimer les URLs
-    #for link in links:
-            #href = link.a['href']
-            #print(href)
-
-    #else:
-        #print("La requête a échoué avec le code de statut", response.status_code)
 
 

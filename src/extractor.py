@@ -16,5 +16,3 @@ def extract_categories(soup : BeautifulSoup) -> list:
             }
         )
     return categ_list
-
-    

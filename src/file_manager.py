@@ -32,6 +32,7 @@ def load_urls(fn: str = "./data/urls.txt"):
 
 # créer des urls
 
+
 # écrire dans le fichier url
 
 # lire le fichier url
