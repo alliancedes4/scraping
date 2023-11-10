@@ -7,3 +7,4 @@ une_categorie_data.csv/
 README.md/
 *.pyc
 __pycache__
+tests/__pycache__

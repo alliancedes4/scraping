@@ -16,3 +16,6 @@ def extract_categories(soup : BeautifulSoup) -> list:
             }
         )
     return categ_list
+
+def extract_info_url(soup : BeautifulSoup) -> list:
+    info_url = soup.find().find_all():
